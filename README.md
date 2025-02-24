@@ -1,13 +1,5 @@
 Задача "Плот"
 
-
-
-
-
-
-
-
-
 #include <iostream>
 #include <string>
 #include <vector>
