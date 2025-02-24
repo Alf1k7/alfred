@@ -1,56 +1,41 @@
-//Задача на структуру данных
+Задача "Плот"
+
+
+
+
+
+
+
+
+
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 using namespace std;
-
-
-struct Discipline{// структура дисциплин 
-    string name;// название предмета
-    int grade;//  Оценка за предмет
-
-};
-struct Student{ // структура студентов
-    string FIO;//имя студента
-    vector<Discipline> Zachetka; //Присваиваем предметы студенту
-};
-
-int main()
+int main(int argc, char* argv[])
 {
-    int n;//Количество студентов
-    cout << "Kolvo studentov: ";
-    cin >> n;
-    vector<Student> students(n);
-    for (int i = 0; i < n; i++) {
-        cout <<endl<< "Student N = " << i + 1<<endl;
-        cout << "FIO: ";
-        cin.ignore();//игнорируем n'
-        getline(cin, students[i].FIO);
-        int n1;
-        cout << "Kolvo disciplin: ";
-        cin >> n1;
-        for (int j = 0; j < n1; j++) {
-            Discipline baratrum;
-            cout << "Name Dis " << j + 1 << ": ";
-            cin.ignore();
-            getline(cin, baratrum.name);
-            cout << "Grade: ";
-            cin >> baratrum.grade;
-            students[i].Zachetka.push_back(baratrum);
-        }
-    }
-    int cnt = 0;
-    for (int i = 0; i < n; i++) {
-        bool is5 = true;
-        for (int j = 0; j < students[i].Zachetka.size(); j++) {
-            if (students[i].Zachetka[j].grade != 5) {
-                is5 = false;
-            }
-        }
-            
-        if (is5) {
-            cnt += 1;
-        }
-    
-    }
-    cout << cnt;
+	int x1, x2, x, y1, y2, y;
+	cin >> x1 >> y1 >> x2 >> y2 >> x >> y;
+	if (y < y1) {
+		cout << "S"; //если ниже южного борта, то плывем к нему
+	}
+	else {
+		if (y > y2) {
+			cout << "N"; //если выше северного борта, то плывем к нему
+		}
+		//если попадаем в зону между верхним и нижним бортами,
+		//то корректировать "высоту" не нужно => ничего не выводим
+	}
+	if (x < x1) {
+		cout << "W"; //если левее западного борта, то плывем к нему
+	}
+	else {
+		if (x > x2) {
+			cout << "E"; //если правее восточного борта, то плывем к нему
+		}
+		//если попадаем в зону между левым и правым бортом,
+		//то ничего корректировать не нужно => ничего не выводим
+	}
+	system("pause"); //останавливаем программу
+	return 0;
+}
